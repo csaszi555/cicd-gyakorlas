@@ -6,5 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Van-e cím az oldalon?
         run: grep -q "<title>" index.html
+
+      - name: HTML szintaxis ellenőrzése
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tidy
+          tidy -errors -quiet index.html
